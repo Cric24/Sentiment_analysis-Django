@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+    <link rel="stylesheet" href="{% static 'analyzer/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Sentiment Analysis</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            <textarea name="text" placeholder="Enter text..."></textarea><br>
+            <input type="submit" value="Analyze">
+        </form>
+        {% if sentiment %}
+        <div class="result">
+            <h2>Analysis Result</h2>
+            <p><strong>Text:</strong> {{ text }}</p>
+            <p><strong>Sentiment:</strong> {{ sentiment }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
